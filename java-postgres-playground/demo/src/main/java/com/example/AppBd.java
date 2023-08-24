@@ -26,14 +26,17 @@ public class AppBd {
         localizarEstado(conn, "TO");
         
         var marca = new Marca();
-        marca.setId(1L);
+        marca.setId(2L);
         
         var produto = new Produto();
+        produto.setId(208L);
         produto.setMarca(marca);
-        produto.setNome("Produdo teste 6");
-        produto.setValor(500);
+        produto.setNome("Produdo novo");
+        produto.setValor(100);
         
-        inserirProduto(conn, produto);
+        //inserirProduto(conn, produto);
+        alterarProduto(conn, produto);
+        excluirProduto(conn, 211L);
         listarDadosTabela(conn, "produto");
 
 
@@ -44,24 +47,50 @@ public class AppBd {
     }
 
 
+        private void excluirProduto(Connection conn, long id) {
+            var sql = "delete from produto where id = ? ";
+            try  {
+                var statement = conn.prepareStatement(sql);
+                statement.setLong(1, id);
+                if(statement.executeUpdate() == 1)
+                System.out.println("Produto excluido com sucesso!");
+                else System.out.println("Produto não localizado!");
+            } catch (SQLException e) {
+               System.out.println("Erro na execução da exclusão" + e.getMessage());
+            }
+
+    }
 
 
-
-    private void inserirProduto(Connection conn, Produto produto) {
+        private void inserirProduto(Connection conn, Produto produto) {
         var sql = "insert into produto (nome, marca_id, valor) values (?, ?, ?)";
 
-        try (var statement = conn.prepareStatement(sql)) {
+        try  {
+            var statement = conn.prepareStatement(sql);
             statement.setString(1, produto.getNome());
             statement.setLong(2, produto.getMarca().getId());
             statement.setDouble(3, produto.getValor());
             statement.executeUpdate();
             
         } catch (SQLException e) {
-             System.err.println("Erro na execução da consulta" + e.getMessage());
+             System.err.println("Erro na execlução da consulta" + e.getMessage());
         }
     }
+        private void alterarProduto(Connection conn, Produto produto) {
+        var sql = "update produto set nome = ?, marca_id = ?, valor = ? where id = ?";
 
-
+        try  {
+            var statement = conn.prepareStatement(sql);
+            statement.setString(1, produto.getNome());
+            statement.setLong(2, produto.getMarca().getId());
+            statement.setDouble(3, produto.getValor());
+            statement.setLong(4, produto.getId());
+            statement.executeUpdate();
+            
+        } catch (SQLException e) {
+             System.err.println("Erro na alteração do produto" + e.getMessage());
+        }
+    }
     private void listarDadosTabela(Connection conn, String tabela) {
         var sql = "select * from " + tabela;
        // System.out.println(sql);
