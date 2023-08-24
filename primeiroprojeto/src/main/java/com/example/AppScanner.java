@@ -1,49 +1,38 @@
 package com.example;
 
-
-
 import java.util.Scanner;
 
 public class AppScanner {
     public static void main(String[] args) {
-
         //System.out.println("Criando um cliente");
-        ClienteCadastro clienteCadastro = new ClienteCadastro();  
+        Cliente cliente = new Cliente();  
         Scanner sc = new Scanner(System.in);
         System.out.println("Digete o nome: ");
-        clienteCadastro.setNome(sc.nextLine());
+        cliente.setNome(sc.nextLine());
 
          System.out.println("Digite o seu CPF: ");
-        clienteCadastro.setCpf(sc.nextLine());
+        cliente.setCpf(sc.nextLine());
 
          System.out.println("Digete o cidade: ");
-        clienteCadastro.setCidade(sc.nextLine());
+        cliente.setCidade(sc.nextLine());
 
          System.out.println("Digete sua Renda: ");
-        clienteCadastro.setRenda(sc.nextDouble());
+        cliente.setRenda(sc.nextDouble());
 
-         System.out.println("Digete o nome: ");
-        clienteCadastro.setAnoNascimento(sc.nextInt());
+         System.out.println("Digete o seu Ano de Nascimento: ");
+        cliente.setAnoNascimento(sc.nextInt());
 
+       sc.nextLine();
         System.out.println("Digite o Sexo: ");       
         String sexo = sc.nextLine();
-        clienteCadastro.setSexo(sexo.charAt(0));
-
-            
-        clienteCadastro.setSexo('M');
-        clienteCadastro.setAnoNascimento(1982);
-        clienteCadastro.setNome("Rafael Brenner 😂");
-        String cpf = "99999999999";
-        clienteCadastro.setCpf(cpf);
-        clienteCadastro.setCidade("Brasília");
-
-         
-        System.out.println("CPF: " + clienteCadastro.getCpf());
-        System.out.println("Nome: " + clienteCadastro.getNome());
-        System.out.println("Renda: " + clienteCadastro.getRenda());
-        System.out.println ("Sexo: " + clienteCadastro.getSexo());
-        System.out.println("Ano de Nascimento: " + clienteCadastro.getAnoNascimento());
-        System.out.println("Especial: " + clienteCadastro.isEspecial());    
+        cliente.setSexo(sexo.charAt(0));        
+                
+        System.out.println("CPF: " + cliente.getCpf());
+        System.out.println("Nome: " + cliente.getNome());
+        System.out.println("Renda: " + cliente.getRenda());
+        System.out.println ("Sexo: " + cliente.getSexo());
+        System.out.println("Ano de Nascimento: " + cliente.getAnoNascimento());
+        System.out.println("Especial: " + cliente.isEspecial());    
         System.out.println();
         
         sc.close();

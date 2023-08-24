@@ -2,7 +2,7 @@ package com.example;
 
 
 
-public class ClienteCadastro {
+public class Cliente {
     private String cpf;    
     private String nome;
     private String cidade;
@@ -11,16 +11,16 @@ public class ClienteCadastro {
     private int anoNascimento;
     private boolean especial;
 
-    public ClienteCadastro(){
-    System.out.println("Criando um Cliente Construtor sem parametros");
+    public Cliente(){
+    //System.out.println("Criando um Cliente Construtor sem parametros");
     double aleatorio = Math.random();
     if(aleatorio > 0.5)
         especial = true;
 
     }
-    public ClienteCadastro ( double renda, char sexo, int anoNascimento){
+    public Cliente ( double renda, char sexo, int anoNascimento){
     this(); // esse metodo esta chamando o construtor da acima ClienteCadastro e para funcionar tem que estar na 1º linha.
-    System.out.println("Criando um Cliente Construtor com parametros");
+    //System.out.println("Criando um Cliente Construtor com parametros");
     setRenda(renda);;
     this.sexo = sexo;
     this.anoNascimento = anoNascimento;
@@ -86,5 +86,8 @@ public class ClienteCadastro {
     }
     public void setAnoNascimento(int anoNascimento) {
         this.anoNascimento = anoNascimento;
+    }
+    public String toString(){
+        return "Cliente: " + nome + " - Cidade: " + cidade;
     }
 }
