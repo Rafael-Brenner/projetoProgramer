@@ -28,7 +28,7 @@ public class DAO {
                 for (int i = 1; i <= cols; i++) {
                     System.out.printf("%-25s | ", result.getString(i));
                 }
-                System.out.println();
+               System.out.println();
             }
            // statement.executeQuery(sql);
         } catch (SQLException e) {

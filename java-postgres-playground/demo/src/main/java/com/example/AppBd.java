@@ -2,7 +2,7 @@ package com.example;
 import java.sql.SQLException;
 
 import com.example.dao.ConnectionManager;
-import com.example.dao.DAO;
+//import com.example.dao.DAO;
 import com.example.dao.EstadoDAO;
 import com.example.dao.ProdutoDAO;
 import com.example.model.Marca;
@@ -25,8 +25,11 @@ public class AppBd {
     public AppBd (){
         try(var conn = ConnectionManager.getConnection()) {
         var estadoDAO = new EstadoDAO(conn);
-        estadoDAO.listar(); 
-        estadoDAO.localizar( "TO");
+        var listaEstado = estadoDAO.listar();
+         for (var estado : listaEstado) {
+            System.out.println(estado);            
+         }
+        estadoDAO.localizar( "PR");
                
         var marca = new Marca();
         marca.setId(2L);
@@ -38,12 +41,13 @@ public class AppBd {
         produto.setValor(100);
         
         var produtoDAO = new ProdutoDAO(conn);
-        produtoDAO.inserir(produto);
+       // produtoDAO.inserir(produto);
         produtoDAO.alterar(produto);
-        produtoDAO.excluir(211L);
+        produtoDAO.excluir(208L);
+        produtoDAO.listar(produto);
 
-        var DAO = new DAO(conn);
-        DAO.listar("produto");
+        //var DAO = new DAO(conn);        
+        //DAO.listar("produto");
 
         }catch (SQLException e) {
             System.err.println("Não foi possíel connectar ao banco de dados" + e.getMessage());
