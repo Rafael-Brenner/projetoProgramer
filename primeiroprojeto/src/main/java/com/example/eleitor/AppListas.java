@@ -3,8 +3,6 @@ package com.example.eleitor;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.Cliente;
-
 public class AppListas {
     
     public static void main(String[] args) {

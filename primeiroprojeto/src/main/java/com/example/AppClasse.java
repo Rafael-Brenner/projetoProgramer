@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.eleitor.Cliente;
 
 public class AppClasse {
     public static void main(String[] args) {

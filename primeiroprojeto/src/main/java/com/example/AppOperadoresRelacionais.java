@@ -1,6 +1,8 @@
 package com.example;
 import java.util.Scanner;
 
+import com.example.eleitor.Cliente;
+
 public class AppOperadoresRelacionais {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
